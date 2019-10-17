@@ -1,6 +1,5 @@
-FROM postgres:11.4-alpine
+FROM postgres:11.5
 
-RUN set -ex \
-	&& apk update \
-	&& apk add bash git nodejs npm openssh-client \
-	&& rm -rf /var/cache/apk/*
+COPY ./setup.sh /setup.sh
+
+RUN /setup.sh && rm /setup.sh
